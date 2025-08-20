@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora Mundial de Impuestos (IVA / GST)</title>
+  <meta name="description" content="Calculadora global de IVA, VAT, GST. Introduce un precio, elige un país y obtén el total con impuestos. Rápido, gratis y global.">
+  <style>
+    body { font-family: Arial, sans-serif; max-width:600px; margin:auto; padding:20px; }
+    input, select, button { width:100%; padding:10px; margin:5px 0; }
+    button { background:#0073e6; color:white; border:none; cursor:pointer; }
+    button:hover { background:#005bb5; }
+    #resultado { margin-top:15px; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <h1>Calculadora Mundial de Impuestos</h1>
+  <p>Introduce el precio base y selecciona un país:</p>
+  <input type="number" id="precio" placeholder="Precio sin impuestos">
+  <select id="pais">
+    <option value="">-- Selecciona un país --</option>
+    <option value="21">Argentina – 21 %</option>
+    <option value="10">Australia – 10 %</option>
+    <option value="17">Brasil – 17 %</option>
+    <option value="5">Canadá – 5 %</option>
+    <option value="13">China – 13 %</option>
+    <option value="18">India – 18 %</option>
+    <option value="10">Japón – 10 %</option>
+    <option value="16">México – 16 %</option>
+    <option value="20">Reino Unido – 20 %</option>
+    <option value="15">Sudáfrica – 15 %</option>
+    <option value="25">Suecia – 25 %</option>
+    <option value="18">Turquía – 18 %</option>
+    <option value="5">EAU – 5 %</option>
+    <option value="10">Vietnam – 10 %</option>
+    <option value="21">España – 21 %</option>
+    <option value="25">Noruega – 25 %</option>
+    <option value="7.7">Suiza – 7.7 %</option>
+    <option value="9">Singapur – 9 %</option>
+    <option value="15">Nueva Zelanda – 15 %</option>
+    <option value="23">Polonia – 23 %</option>
+    <option value="21">Rumanía – 21 %</option>
+    <option value="27">Hungría – 27 %</option>
+    <option value="25.5">Finlandia – 25.5 %</option>
+    <option value="23">Eslovaquia – 23 %</option>
+    <option value="24">Estonia – 24 %</option>
+    <option value="17">Luxemburgo – 17 %</option>
+    <option value="25">Croacia – 25 %</option>
+    <option value="25">Dinamarca – 25 %</option>
+    <option value="20">Bélgica – 21 %</option>
+    <option value="21">Países Bajos – 21 %</option>
+    <option value="20">Israel – ~17 %</option>
+    <option value="18">Rusia – 18 %</option>
+    <option value="7">Tailandia – 7 %</option>
+    <option value="10">Malasia – 10 %</option>
+    <option value="10">Corea del Sur – 10 %</option>
+    <option value="18">Malta – 18 %</option>
+    <option value="20">Albania – 20 %</option>
+    <option value="19">Argelia – 19 %</option>
+    <option value="9.5">Andorra – 9.5 %</option>
+    <option value="17">Pakistán – 17 %</option>
+    <!-- Puedes añadir más países fácilmente -->
+  </select>
+  <button onclick="calcularImpuesto()">Calcular</button>
+  <p id="resultado"></p>
+  <script>
+    function calcularImpuesto() {
+      const precio = parseFloat(document.getElementById("precio").value);
+      const tasa = parseFloat(document.getElementById("pais").value);
+      if (isNaN(precio)) return document.getElementById("resultado").textContent = 'Introduce un precio válido.';
+      if (isNaN(tasa)) return document.getElementById("resultado").textContent = 'Selecciona un país.';
+      const impuesto = precio * tasa / 100;
+      document.getElementById("resultado").innerHTML =
+        `Impuesto: ${impuesto.toFixed(2)}<br>Precio total con impuestos: ${(precio + impuesto).toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
